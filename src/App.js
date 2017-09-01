@@ -23,6 +23,20 @@ class BooksApp extends React.Component {
     })
   }
 
+  moveBook = (book, shelf) => {
+    this.setState((state) => ({
+      books: state.books.filter((b) => b.id !== book.id)
+    }))
+
+    book.shelf = shelf
+    this.setState((state) => ({
+      books: state.books.concat(book)
+    }))
+
+
+    //BooksAPI.update(book,shelf)
+  }
+
   render() {
     return (
       <div className="app">
@@ -49,33 +63,10 @@ class BooksApp extends React.Component {
           </div>
         )}/>
         <Route exact path="/" render={() => (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              <div>
                 <BookShelf
                   books={this.state.books}
-                  category="currentlyReading"
-                  prettyCategory="Currently Reading"
+                  moveBook={this.moveBook}
                 />
-                <BookShelf
-                  books={this.state.books}
-                  category="wantToRead"
-                  prettyCategory="Want To Read"
-                />
-                <BookShelf
-                  books={this.state.books}
-                  category="read"
-                  prettyCategory="Read"
-                />
-              </div>
-            </div>
-            <div className="open-search">
-              <Link to="/search">Add a book</Link>
-            </div>
-          </div>
         )}/>
       </div>
     )
