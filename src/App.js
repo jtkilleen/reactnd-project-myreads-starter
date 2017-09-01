@@ -25,7 +25,6 @@ class BooksApp extends React.Component {
   }
 
   moveBook = (book, shelf) => {
-    console.log(book, shelf)
     BooksAPI.update(book, shelf).then(() => {
       this.setState((state) => ({
         books: state.books.filter((b) => b.id !== book.id)
@@ -56,9 +55,6 @@ class BooksApp extends React.Component {
       }
     })
   }
-
-
-    //BooksAPI.update(book,shelf)
 
   render() {
     return (

@@ -25,10 +25,6 @@ class Library extends Component {
     }
   }
 
-  // clearQuery = () => {
-  //   this.setState({ query:'' })
-  // }
-
   render() {
     const { books, results } = this.props
     const { query } = this.state
@@ -37,7 +33,7 @@ class Library extends Component {
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i')
       showingBooks = results.filter((book) => match.test(book.title))
-      
+
     } else {
       showingBooks = []
     }
