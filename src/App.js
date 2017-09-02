@@ -64,11 +64,37 @@ class BooksApp extends React.Component {
             moveBook={this.moveBook}/>
         )}/>
         <Route exact path="/" render={() => (
-                <BookShelf
-                  books={this.state.books}
-                  moveBook={this.moveBook}
-                />
-        )}/>
+          <div className="list-books">
+            <div className="list-books-title">
+              <h1>MyReads</h1>
+            </div>
+            <div className="list-books-content">
+              <div>
+              <BookShelf
+                books={this.state.books}
+                moveBook={this.moveBook}
+                category={"currentlyReading"}
+                formattedCategory={"Currently Reading"}
+              />
+              <BookShelf
+                books={this.state.books}
+                moveBook={this.moveBook}
+                category={"wantToRead"}
+                formattedCategory={"Want To Read"}
+              />
+              <BookShelf
+                books={this.state.books}
+                moveBook={this.moveBook}
+                category={"read"}
+                formattedCategory={"Read"}
+              />
+              </div>
+            </div>
+            <div className="open-search">
+              <Link to="/search">Add a book</Link>
+            </div>
+          </div>
+          )}/>
       </div>
     )
   }
